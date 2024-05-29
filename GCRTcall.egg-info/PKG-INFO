@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: GCRTcall
+Version: 1.0
+Summary: GCRTcall: a Transformer based basecaller for nanopore RNA sequencing
+Home-page: https://github.com/liqingwen98/BaseNet.git
+Author: Qingwen Li
+Author-email: arwinleecn@gmail.com
+Keywords: nanopore sequencing,basecalling,transformer,end-to-end
+Requires-Python: >=3.8
+Requires-Dist: funasr==0.7.0
+Requires-Dist: torch
