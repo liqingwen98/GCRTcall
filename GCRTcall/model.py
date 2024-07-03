@@ -160,7 +160,6 @@ def ini_model():
     return model
 
 def load_model(dirname, device='cpu', learning_rate=0.0005, warmup_steps=10000, half=False):
-    # 初始化device和model
     device = torch.device(device)
     model = Model()
     model.to(device)
@@ -169,19 +168,9 @@ def load_model(dirname, device='cpu', learning_rate=0.0005, warmup_steps=10000, 
     for k, v in checkpoint['state_dict'].items():
         name = k[7:]
         new_state_dict[name] = v
-    # feature_state_dict = OrderedDict((key[:], value) for key, value in new_state_dict.items() if 'feature' in key)
-    # feature_state_dict = OrderedDict(zip(model.feature.state_dict().keys(), feature_state_dict.values()))
     model.load_state_dict(new_state_dict, strict=True)
-    # model.position2 = PositionalEncoding(512, 0.1, 10000)
-    # model.position2r = PositionalEncoding(512, 0.1, 10000)
-    # model.feature.load_state_dict(feature_state_dict, strict=True)
-    # optimizer=AdamW(model.parameters(), amsgrad=False, lr=learning_rate)
     optimizer = Ranger(model.parameters(), lr=learning_rate, weight_decay=0.01)
-    # checkpoint['optimizer']['param_groups'][0]['lr'] = checkpoint['optimizer']['param_groups'][0]['lr']*0.3
-    # checkpoint['scheduler']['min_lrs'][0] = 1e-10
-    # checkpoint['scheduler']['_last_lr'][0] = checkpoint['scheduler']['_last_lr'][0]*0.3
     optimizer.load_state_dict(checkpoint['optimizer'])
-    # scheduler = WarmupLR(optimizer, warmup_steps=warmup_steps)
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, patience=1, 
                                                             factor=0.5, verbose=False, 
                                                             threshold=0.1, min_lr=1e-05)
