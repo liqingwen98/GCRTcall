@@ -11,12 +11,13 @@ pip install -e .
 
 ## Citations
 ``` bibtex
-@article {Li2024.06.03.597255,
-	author = {Li, Qingwen and Sun, Chen and Wang, Daqian and Lou, Jizhong},
-	title = {GCRTcall: a Transformer based basecaller for nanopore RNA sequencing enhanced by gated convolution and relative position embedding via joint loss training},
-	year = {2024},
-	doi = {10.1101/2024.06.03.597255},
-	journal = {bioRxiv}
+@ARTICLE{10.3389/fgene.2024.1443532,
+AUTHOR={Li, Qingwen  and Sun, Chen  and Wang, Daqian  and Lou, Jizhong },
+TITLE={GCRTcall: a transformer based basecaller for nanopore RNA sequencing enhanced by gated convolution and relative position embedding via joint loss training},
+JOURNAL={Frontiers in Genetics},
+YEAR={2024},
+DOI={10.3389/fgene.2024.1443532},
+ISSN={1664-8021},
 }
 ```
 
